@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+// Add this at the top to import the route
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,3 +27,6 @@ mongoose.connect('mongodb+srv://sunilpargi121:ezSCk51xgQTJQFda@cluster0.kzaxdlb.
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Use the route
+app.use('/api', authRoutes);
